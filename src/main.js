@@ -157,7 +157,7 @@ const init = async () => {
           const bckgDimensions = node.__bckgDimensions;
           if(bckgDimensions) ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
        })
-      .nodeVal(node => node.x - node._bckgDimensions[0] / 2)
+      .nodeVal(node => node.x - node.__bckgDimensions[0] / 2)
       .linkDirectionalParticles(2)
       .linkDirectionalParticleWidth(l => !highlightLinks.size ? 4 : highlightLinks.has(l) ? 15 : 0)
       .linkCurvature('curvature')
@@ -197,6 +197,7 @@ const init = async () => {
                   }
         }
       });
+      setTimeout(() => graph.zoomToFit(500),200);
 };
 
 init();
